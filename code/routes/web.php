@@ -15,5 +15,5 @@ Route::get('/', function () {
     return view('content/home');
 })->name('home');
 
-Route::get('/clients', 'ContentController@home')->name('clients');
+Route::get('/clients', 'ClientsController@index')->name('clients');
 Route::get('/reservations', 'ContentController@home')->name('reservations');
