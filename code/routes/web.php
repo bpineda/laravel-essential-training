@@ -16,4 +16,4 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/clients', 'ClientsController@index')->name('clients');
-Route::get('/reservations', 'ContentController@home')->name('reservations');
+Route::get('/reservations', 'ReservationsController@index')->name('reservations');

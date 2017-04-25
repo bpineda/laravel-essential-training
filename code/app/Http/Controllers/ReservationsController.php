@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class ReservationsController extends Controller
 {
-    //
+    function index()
+    {
+        return view('reservations/index', [] );
+    }
 }
