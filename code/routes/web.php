@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('content/home');
+})->name('home');
 
-Route::get('/home', 'ContentController@home');
+Route::get('/clients', 'ContentController@home')->name('clients');
+Route::get('/reservations', 'ContentController@home')->name('reservations');
