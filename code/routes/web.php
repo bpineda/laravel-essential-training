@@ -16,4 +16,9 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/clients', 'ClientsController@index')->name('clients');
-Route::get('/reservations', 'ReservationsController@index')->name('reservations');
+Route::get('/clients/new', 'ClientsController@newClient')->name('new_clients');
+Route::get('/clients/{id}', 'ClientsController@show')->name('show_clients');
+
+Route::get('/reservation/{user_id}', 'ReservationsController@index')->name('reservations');
+Route::post('/reservation/{user_id}', 'ReservationsController@index')->name('reservations');
+Route::get('book/room/{client_id}/{room_id}/{date_in}/{date_out}', 'ReservationsController@bookRoom')->name('book_room');
