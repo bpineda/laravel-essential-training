@@ -20,7 +20,6 @@
           <ul class="dropdown menu" data-dropdown-menu="49qhhm-dropdown-menu" role="menubar">
             <li role="menuitem"><a href="{{ route('home') }}">Home</a></li>
             <li role="menuitem"><a href="{{ route('clients') }}">Clients</a></li>
-            <li role="menuitem"><a href="{{ route('reservations') }}">Reservations</a></li>
           </ul>
         </div>
       </div>
