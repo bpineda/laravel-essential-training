@@ -1,24 +1,5 @@
-/node_modules
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
-/.idea
-/.vagrant
-Homestead.json
-Homestead.yaml
-npm-debug.log
-.env
 
-# Created by https://www.gitignore.io/api/macos,windows,laravel,composer,phpstorm,sublimetext,visualstudiocode
-
-### Composer ###
-composer.phar
-/vendor/
-
-# Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
-# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
-# composer.lock
+# Created by https://www.gitignore.io/api/macos,linux,windows,laravel,phpstorm,sublimetext,visualstudiocode
 
 ### Laravel ###
 vendor/
@@ -41,6 +22,21 @@ Homestead.json
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
+
+### Linux ###
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
 
 ### macOS ###
 *.DS_Store
@@ -191,4 +187,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.gitignore.io/api/macos,windows,laravel,composer,phpstorm,sublimetext,visualstudiocode
+# End of https://www.gitignore.io/api/macos,linux,windows,laravel,phpstorm,sublimetext,visualstudiocode
