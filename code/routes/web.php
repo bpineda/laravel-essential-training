@@ -11,14 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('content/home');
-})->name('home');
+Route::get('/', 'ContentController@home')->name('home');
 
-Route::get('/clients', 'ClientsController@index')->name('clients');
-Route::get('/clients/new', 'ClientsController@newClient')->name('new_clients');
-Route::get('/clients/{id}', 'ClientsController@show')->name('show_clients');
+Route::get('/clients', 'ClientsController@index')->name('clients')->middleware('auth');
+Route::get('/clients/new', 'ClientsController@newClient')->name('new_clients')->middleware('auth');
 
-Route::get('/reservation/{user_id}', 'ReservationsController@index')->name('reservations');
-Route::post('/reservation/{user_id}', 'ReservationsController@index')->name('reservations');
-Route::get('book/room/{client_id}/{room_id}/{date_in}/{date_out}', 'ReservationsController@bookRoom')->name('book_room');
+Route::post('/clients/new', 'ClientsController@newClient')->name('create_clients')->middleware('auth');
+
+Route::get('/clients/{client_id}', 'ClientsController@show')->name('show_clients')->middleware('auth');
+Route::post('/clients/{client_id}', 'ClientsController@modify')->name('modify_clients')->middleware('auth');
+
+Route::get('/reservation/{user_id}', 'ReservationsController@index')->name('reservations')->middleware('auth');
+Route::post('/reservation/{user_id}', 'ReservationsController@index')->name('reservations')->middleware('auth');
+Route::get('book/room/{client_id}/{room_id}/{date_in}/{date_out}', 'ReservationsController@bookRoom')->name('book_room')->middleware('auth');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->middleware('auth');

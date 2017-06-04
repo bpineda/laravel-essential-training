@@ -8,7 +8,7 @@
         <div class="medium-2  columns">BOOKING FOR:</div>
         <div class="medium-2  columns"><b>{{ $client->name }} {{ $client->last_name }}</b></div>
         <form action="" method="post">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        
           <div class="medium-1  columns">FROM:</div>
           <div class="medium-2  columns"><input name="dateFrom" value="{{ $dateFrom }}" type="text" class="datepicker" /></div>
           <div class="medium-1  columns">TO:</div>
@@ -27,7 +27,7 @@
           <tbody>
           @foreach ($rooms as $room)
             <tr>
-              <td>{{$room->id}}</td>
+              <td>{{$room->name}}</td>
               <td>
                 <div class="callout success">
                     <h7>Available</h7>

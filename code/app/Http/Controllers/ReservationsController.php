@@ -11,7 +11,7 @@ class ReservationsController extends Controller
 {
 
 
-    function index(Request $request)
+    function index($client_id, Request $request)
     {
 
         $dateFrom = $request->input("dateFrom");
@@ -24,7 +24,7 @@ class ReservationsController extends Controller
         $data['dateFrom'] = $dateFrom;
         $data['dateTo'] = $dateTo;
         $data['rooms'] = $room->getAvailableRooms($dateFrom, $dateTo);
-        $data['client'] = $client->find(1)->first();
+        $data['client'] = $client->find($client_id);
         return view('reservations/index', $data );
     }
 
@@ -34,10 +34,27 @@ class ReservationsController extends Controller
                         $date_out )
     {
         $reservation = new Reservation();
-        $reservation->bookRoom(   $client_id, 
-                                $room_id, 
-                                $date_in, 
-                                $date_out );
+        $client_instance = new Client();
+        $room_instance = new Room();
+
+        $client = $client_instance->find($client_id);
+        $room = $room_instance->find($room_id);
+        
+        $reservation->date_in = $date_in;
+        $reservation->date_out = $date_out;
+        $reservation->room()->associate($room);
+        $reservation->client()->associate($client);
+
+        $room_availability = $room->getRoomAvailability($room_id, $date_in, $date_out);
+
+        if( !$room_availability )
+        {
+            $reservation->save();
+        }else
+        {
+            abort(405, 'Trying to book an already booked room');
+        }
+
         return redirect()->route('clients');
     }
 }

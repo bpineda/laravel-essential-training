@@ -7,6 +7,11 @@
         <h4>Clients</h4>
         <div class="medium-2  columns"><a class="button hollow success" href="{{ route('new_clients') }}">ADD NEW CLIENT</a></div>
 
+
+        @if ( count($clients) == 0 )
+          <span>No clients found.</span>
+        @else
+
         <table class="stack">
           <thead>
             <tr>
@@ -29,6 +34,9 @@
 
                       </tbody>
         </table>
+
+        @endif
+
       </div>
     </div>
 

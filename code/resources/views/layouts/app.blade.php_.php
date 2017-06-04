@@ -22,23 +22,6 @@
             <li role="menuitem"><a href="{{ route('clients') }}">Clients</a></li>
           </ul>
         </div>
-        <div class="top-bar-right">
-          <ul class="dropdown menu" data-dropdown-menu="49qhhm-dropdown-menu" role="menubar">
-            <li role="menuitem">
-              @if (Auth::guest())
-              <a href="{{ route('login') }}">Login</a>
-              @else
-              <a  href="{{ route('logout') }}"
-                  onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                  Logout
-              </a>
-              @endif
-          </li>
-          </ul>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-        </div>
       </div>
     </div>
     <!-- End Top Bar -->

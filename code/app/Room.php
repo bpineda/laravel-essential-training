@@ -17,7 +17,6 @@ class Room extends Model
     {
 
         $available_rooms = DB::table('rooms as r')
-                    //->select(DB::raw('r.id, r.name'))
                     ->select('r.id', 'r.name')
                     ->whereRaw("
                     r.id NOT IN ( 
@@ -35,4 +34,24 @@ class Room extends Model
         return $available_rooms;
 
     }
+
+    public function getRoomAvailability($room_id, $date_start, $date_final)
+    {
+        $available_rooms = DB::table('reservations')
+                    
+                    ->whereRaw("
+                     NOT (
+                            date_out < '{$date_start}' OR
+                            date_in > '{$date_final}'
+                        )
+                        
+                    AND room_id = {$room_id}
+                    
+                    ")
+                    ->count()
+                    ;                    
+
+        return $available_rooms;
+    }
+
 }
